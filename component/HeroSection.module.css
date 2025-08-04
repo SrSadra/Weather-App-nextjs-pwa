@@ -1,0 +1,43 @@
+.sunimage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(235, 239, 102);
+    box-shadow: 0 0 50px #f2dc4e, 0 0 50px #d1b500,0 0 50px #b9a000, 0 0 50px #948000 ;
+    animation: sunrise 2s infinite linear forwards, rays 2s 2s infinite  alternate-reverse;
+    z-index: -1;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%); /*transform item with 50% of its width to position it in center */
+}
+
+@keyframes sunrise {
+    0% {
+        box-shadow: none;
+    }
+
+    100%{
+                box-shadow: 0 0 0px #f2dc4e,
+                        0 0 50px #d1b500,
+                        0 0 100px #b9a000,
+                        0 0 150px #948000;
+                    ;
+    }
+}
+
+@keyframes rays {
+    0% {
+        box-shadow: 0 0 0px #f2dc4e,
+            0 0 50px #d1b500,
+            0 0 100px #b9a000,
+            0 0 150px #948000;;
+    }
+
+    100% {
+                box-shadow: 0 0 50px #f2dc4e,
+                        0 0 100px #d1b500,
+                        0 0 150px #b9a000,
+                        0 0 200px #948000;
+                    ;
+    }
+}
