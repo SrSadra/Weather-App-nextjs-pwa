@@ -3,7 +3,7 @@
 Weather App where you can search for different places and the weather data is being fetched from weather apis and is being shown on this single page app.This Project is developed with Nextjs and is for pwa learning purpose. However some pwa bugs still exist and I'm working on them.
 
 
-<img src = "./demo/demo.PNG" width = "200">
+<img src = "demo/demo.png" width = "200">
 
 
 ## How to Use
