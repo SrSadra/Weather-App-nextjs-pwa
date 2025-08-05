@@ -24,7 +24,9 @@ export default function PushNotificationManager() {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
+        if ('serviceWorker' in navigator
+            // && 'PushManager' in window
+        ) {
             setIsSupported(true);
             registerServiceWorker();
         }
@@ -35,6 +37,8 @@ export default function PushNotificationManager() {
             scope: '/',
             updateViaCache: 'none',
         });
+        console.log("okkk");
+        
         const sub = await registration.pushManager.getSubscription();
         setSubscription(sub);
     }

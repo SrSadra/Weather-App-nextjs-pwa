@@ -42,10 +42,6 @@ export async function getCityWeather(city) {
   if (!res.ok) {
        throw new Error("Can not fetch weather");
   }
-  const time = setTimeout(tmp, 10000);
-  function tmp() {
-    clearTimeout(time);
-  }
   const data = await res.json();
   console.log(data);
   return data;

@@ -13,7 +13,7 @@ const HomePage = () => {
 
 
   return (
-    <div className='flex md:mt-40 mt-20 items-center h-screen flex-col gap-20'>
+    <div className='flex items-center h-screen flex-col gap-20'>
       <HeroSection />
       <Suspense fallback={<p>Loading ...</p>}>
           <SearchResult cities={cities}/>

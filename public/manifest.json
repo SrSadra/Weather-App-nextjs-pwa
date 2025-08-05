@@ -1,6 +1,12 @@
 {
   "name": "MyWeather",
   "short_name": "MyWeather",
+  "scope": "/",
+  "start_url": "/",
+  "orientation": "portrait",
+  "theme_color": "#0095ffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +21,4 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#00ff63",
-  "background_color": "#ffffff",
-  "display": "standalone"
 }

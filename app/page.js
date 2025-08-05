@@ -6,8 +6,8 @@ import SearchWeather from "@/component/SearchWeather";
 export default function Home() {
   return (
     <div>
-      <PushNotificationManager />
-      <PwaHome />
+      {/* <PushNotificationManager />
+      <PwaHome /> */}
       <HomePage />
     </div>
   );

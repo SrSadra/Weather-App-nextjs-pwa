@@ -43,7 +43,7 @@ const ResultBox = ({city}) => {
                           <Typography variant="h4">Weather: {weather.current.condition.text}</Typography>
                           <div className="flex flex-row items-center">
                               <Typography variant="h6">{weather.current.temp_c}°C</Typography>
-                              <Image src={`https:${weather.current.condition.icon}`} width={40} height={20}/>
+                              <Image src={`https:${weather.current.condition.icon}`} width={40} height={20} alt="current condition"/>
                           </div>
                       </div>
                       <div className="flex flex-row justify-start">
