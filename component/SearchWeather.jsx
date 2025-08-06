@@ -1,22 +1,29 @@
 "use client"
 
-import { Autocomplete, Box, TextField, useTheme } from '@mui/material'
-import React, { use, useEffect, useState } from 'react'
+import { getCities } from '@/app/actions/weather';
+import { Autocomplete, Box, TextField } from '@mui/material'
+import { useQuery } from '@tanstack/react-query';
+import { use } from 'react'
+// import Image from 'next/image';
 
-const SearchWeather = ({cities , onInputChange}) => {
-    const actualCities = use(cities);
+const SearchWeather = ( { onInputChange}) => {
+    // const actualCities = use(cities);
+    const { data } = useQuery({
+        queryKey: ["cities"],
+        queryFn: getCities,
+    });
 
     return (
             <div>
             <Autocomplete
                 sx={{ width: { xs: 200, sm: 400 } }}
                 onChange={(event, newValue) => {
-                    onInputChange({name: newValue.name , code : newValue.country} );
+                    onInputChange({name: newValue.city , code : newValue.code} );
                 }}
-                size="medium"
-                    options={ actualCities }
+                // size="medium"
+                    options={ data }
                     autoHighlight //This prop automatically highlights the first matching option in the dropdown as the user types.
-                    getOptionLabel={(option) => option.name} //This function tells the component what string to display as the label for each option.
+                    getOptionLabel={(option) => option.city} //This function tells the component what string to display as the label for each option.
                     renderOption={(props, option) => {
                         const { key, ...optionProps } = props;
                         return (
@@ -25,15 +32,16 @@ const SearchWeather = ({cities , onInputChange}) => {
                                 component="li"
                                 {...optionProps}
                             >
-                                <img
+                                {/* <img
                                     className='mx-1 rounded-md'
                                     loading="lazy"
                                     width="25"
-                                    srcSet={`https://flagcdn.com/w40/${option.country.toLowerCase()}.png 2x`}
-                                    src={`https://flagcdn.com/w20/${option.country.toLowerCase()}.png`}
-                                    alt=""
-                                />
-                                {option.name}, {option.country}
+                                    height="15"
+                                    srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+                                    src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                                    alt="Country logo"
+                                /> */}
+                                {option.city}, {option.country}
                             </Box>
                         );
                     }}

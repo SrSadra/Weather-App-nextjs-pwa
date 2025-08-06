@@ -1,30 +1,35 @@
 "use server";
 
 export async function getCities() {
-    // const res = await fetch('https://api.api-ninjas.com/v1/city?name=a', {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "X-Api-Key": process.env.API_CITY_KEY,
-    //   },
-    // });
-    // if (!res.ok) {
-    //     throw new Error("Can not fetch cities");
-    // }
-    // const cities = await res.json();
-    // console.log(cities);
-    const cities = [
-      {
-        name: "Jakarta",
-        latitude: -6.2146,
-        longitude: 106.845,
-        country: "ID",
-        population: 34540000,
-        region: "Java",
-        is_capital: true,
-      },
-    ];
-    return cities;
+const url = "https://country-facts.p.rapidapi.com/countries";
+
+try {
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": process.env.API_CITY_KEY2,
+      "x-rapidapi-host": "country-facts.p.rapidapi.com",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("can not fetch countries");
+  }
+
+  const data = await response.json();
+  
+  const tmp = data.result;
+  const result = tmp.map((country) => {
+    return {
+      country: country.name.common,
+      city: country.capital[0],
+      code : country.cca2
+    }
+  })
+  return result;
+} catch (error) {
+  throw new Error(error);
+}
 }
 
 
