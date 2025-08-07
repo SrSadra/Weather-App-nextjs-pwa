@@ -28,7 +28,7 @@ const ResultBox = ({city}) => {
 
 
   return (
-      <div>
+      <div data-testid="result-box">
           {weather ? (
               <Box sx={{justifyContent: "center", alignItems: "center" , display: "flex" , flexDirection: "column", backgroundColor: "gray" , borderRadius: "20px"}}>
                   <div className="flex-row flex gap-4 items-center justify-center w-full my-4 mx-5">

@@ -8,7 +8,7 @@ import { use } from 'react'
 
 const SearchWeather = ( { onInputChange}) => {
     // const actualCities = use(cities);
-    const { data } = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ["cities"],
         queryFn: getCities,
     });
@@ -20,8 +20,9 @@ const SearchWeather = ( { onInputChange}) => {
                 onChange={(event, newValue) => {
                     onInputChange({name: newValue.city , code : newValue.code} );
                 }}
+                loading={isLoading}
                 // size="medium"
-                    options={ data }
+                    options={ data || []}
                     autoHighlight //This prop automatically highlights the first matching option in the dropdown as the user types.
                     getOptionLabel={(option) => option.city} //This function tells the component what string to display as the label for each option.
                     renderOption={(props, option) => {
@@ -53,6 +54,7 @@ const SearchWeather = ( { onInputChange}) => {
                                 htmlInput: { //htmlInput is the slot name for the actual underlying <input> element inside <TextField. if you skip this it can not work normally
                                     ...params.inputProps,
                                     autoComplete: 'new-password', // disable autocomplete and autofill
+                                    'data-testid': 'search-weather-input'
                                 },
                             }}
                             sx={{
